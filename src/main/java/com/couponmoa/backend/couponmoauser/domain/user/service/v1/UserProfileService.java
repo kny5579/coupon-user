@@ -34,6 +34,7 @@ public class UserProfileService {
 
     @Transactional
     public void updateUserImage(Long userId, MultipartFile multipartFile) throws IOException {
+        log.info("bucket name: {}",bucketName);
         User user = getUserById(userId);
         String userImageKey = uploadImageToS3(multipartFile);
 
