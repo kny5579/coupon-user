@@ -68,6 +68,7 @@ public class UserProfileService {
         metadata.setContentLength(multipartFile.getSize());
         InputStream inputStream = multipartFile.getInputStream();
         try {
+            System.out.println("사용 중인 버킷: "+bucketName);
             amazonS3.putObject(new PutObjectRequest(bucketName, s3FileName, inputStream, metadata));
         } catch (AmazonServiceException e) {
             log.error("AWS S3 서비스 오류: {}", e.getErrorMessage());
